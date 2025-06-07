@@ -1,8 +1,5 @@
-# Entry point for FastAPI app
 from fastapi import FastAPI
+from . import routes
 
 app = FastAPI()
-
-@app.get("/")
-def read_root():
-    return {"message": "Hello, world!"}
+app.include_router(router=routes.router, prefix="/api", tags=["users"])

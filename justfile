@@ -20,9 +20,14 @@ down:
 migrate:
 	alembic upgrade head
 
+ci:
+	just install
+	just test
+
 # Run tests
 test:
-	pytest
+	pytest tests/test_users.py 
+	pytest tests/test_messages.py
 
 # Format code using black and isort
 format:

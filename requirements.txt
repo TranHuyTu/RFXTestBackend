@@ -10,3 +10,10 @@ httpx
 pytest-asyncio
 black
 isort
+psycopg2
+psycopg2-binary
+pydantic[email]
+mcp[cli]
+openai-agents
+fastapi-mcp
+pandas

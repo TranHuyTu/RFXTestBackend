@@ -14,6 +14,32 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my_network
 
+  fastapi:
+    image: tranhuytu37/rfx_docker:latest
+    build: 
+      context: ./
+      target: fastapi-app
+      dockerfile: Dockerfile
+    container_name: fastapi-01
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      HOST: db
+    volumes:
+      - .:/app
+    networks:
+      - my_network
+networks:
+  my_network:
+    driver: bridge
 volumes:
   postgres_data:
+    driver: local
+  cache:
+    driver: local
